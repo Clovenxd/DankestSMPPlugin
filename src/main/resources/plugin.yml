@@ -1,0 +1,7 @@
+name: DankestSMPPlugin
+version: '${project.version}'
+main: dankestsmp.dankestsmpplugin.DankestSMPPlugin
+api-version: 1.20
+authors: [ Cloven ]
+description: To add uniqueness to DankestSMP
+website: https://github.com/Clovenxd
