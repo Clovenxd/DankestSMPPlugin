@@ -15,7 +15,6 @@ public class Protection {
     //add player to protection hashmap
     public void addProtectionToPlayer(Player p){
         protect.put(p.getUniqueId(), new Date());
-        DankestSMPPlugin.debugger.sendMessageToConsole("Giving protection to uuid: " + p.getUniqueId().toString());
     }
 
     // add player to protection hashman with uuid param
@@ -31,7 +30,6 @@ public class Protection {
     //remove player from protection hashmap with uuid param
     public void removeProtectionFromPlayer(UUID uuid){
         protect.remove(uuid);
-        DankestSMPPlugin.debugger.sendMessageToConsole("Removed UUID: " + uuid.toString());
     }
 
     //checks if hashmap is empty
@@ -54,9 +52,7 @@ public class Protection {
         ArrayList<UUID> expiredProtection = new ArrayList<>();
 
         for (Map.Entry<UUID, Date> playerBeingChecked: protect.entrySet()) { //traverse hashmap with foreach loop
-            DankestSMPPlugin.debugger.sendMessageToConsole(playerBeingChecked.getKey().toString() + ":" + playerBeingChecked.getValue().getTime());
-            if(playerBeingChecked.getValue().getTime() >= playerBeingChecked.getValue().getTime() + 1000*60){ //check if they've had protection for 15 mins or longer
-                    DankestSMPPlugin.debugger.sendMessageToConsole("uuid: " + playerBeingChecked.getKey().toString() + "'s protection expired, current time: " + new Date().getTime() + " received protection at " + playerBeingChecked.getValue().getTime());
+            if(new Date().getTime() >= playerBeingChecked.getValue().getTime() + 1000*60*15){ //check if they've had protection for 15 mins or longer
                     expiredProtection.add(playerBeingChecked.getKey());
             }
         }
