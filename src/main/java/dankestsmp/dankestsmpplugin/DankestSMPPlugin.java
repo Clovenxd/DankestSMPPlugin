@@ -7,7 +7,7 @@ public final class DankestSMPPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-
+    	// - Tony likes dick in his ass on a daily yuh
     }
 
     @Override
