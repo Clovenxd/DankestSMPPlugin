@@ -4,30 +4,37 @@ import dankestsmp.dankestsmpplugin.functions.Protection;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.World;
-import org.bukkit.generator.WorldInfo;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public final class DankestSMPPlugin extends JavaPlugin {
 
-
+    //variables and other classes for other classes to access through main plugin instance.
     public static Server server = Bukkit.getServer();
     public static DankestSMPPlugin plugin;
-    public static Protection protection;
+    public final static Protection protection = new Protection();
 
     @Override
     public void onEnable() {
-        getLogger().info("Starting DankestSMPPlugin.");
-        plugin = this;
+        getLogger().info("Started DankestSMPPlugin.");
+        plugin = this; //setting plugin to this instance.
 
         new BukkitRunnable(){
             @Override
-            public void run(){
-
+            public void run(){ //task to remove players with expired protection.
+                plugin.getLogger().info("[Debugger] Starting task to remove Players protection that expired.");
+                ArrayList<UUID> playersWithExpiredProtection = protection.playersInListWithExpiredProtection();
+                if(!playersWithExpiredProtection.isEmpty()){
+                    for (UUID player: playersWithExpiredProtection) {
+                        protection.removeProtectionFromPlayer(player);
+                    }
+                }
             }
-        }
+        }.runTaskTimerAsynchronously(plugin, 0, 20*60*15); //run task every 15 mins
 
 
     }
@@ -37,10 +44,4 @@ public final class DankestSMPPlugin extends JavaPlugin {
         getLogger().info("Shutting down DankestSMPPlugin.");
     }
 
-    public World getWorld(String s){
-        return server.getWorld(s);
-    }
-    public static List<World> getWorlds(){
-        return server.getWorlds();
-    }
 }
