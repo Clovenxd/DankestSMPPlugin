@@ -4,6 +4,7 @@ import dankestsmp.dankestsmpplugin.functions.Protection;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.World;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -17,9 +18,23 @@ public final class DankestSMPPlugin extends JavaPlugin {
     public static Server server = Bukkit.getServer();
     public static DankestSMPPlugin plugin;
     public final static Protection protection = new Protection();
+    
+    // Testing spigot config api to be used for future
+    FileConfiguration CONFIG = getConfig();
 
     @Override
     public void onEnable() {
+    	/* ----------------------------------------------
+    	 * Testing spigot config api to be used for future
+    	 * (If we need more control I can write a JSON solution)
+    	 * ----------------------------------------------
+    	 */
+    	CONFIG.addDefault("unused_val", true);
+    	CONFIG.options().copyDefaults(true);
+    	saveConfig();
+    	
+
+    	
         getLogger().info("Started DankestSMPPlugin.");
         plugin = this; //setting plugin to this instance.
 
