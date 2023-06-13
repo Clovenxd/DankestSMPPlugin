@@ -1,23 +1,24 @@
 package dankestsmp.dankestsmpplugin;
 
+import dankestsmp.dankestsmpplugin.Utils.Debugger;
+import dankestsmp.dankestsmpplugin.Utils.Tasks;
 import dankestsmp.dankestsmpplugin.functions.Protection;
+import dankestsmp.dankestsmpplugin.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
-import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public final class DankestSMPPlugin extends JavaPlugin {
 
     //variables and other classes for other classes to access through main plugin instance.
-    public static Server server = Bukkit.getServer();
     public static DankestSMPPlugin plugin;
-    public final static Protection protection = new Protection();
+    public static Protection protection = new Protection();
+    public final static Debugger debugger = new Debugger();
+    private final static Tasks tasks = new Tasks();
     
     // Testing spigot config api to be used for future
     FileConfiguration CONFIG = getConfig();
@@ -32,26 +33,16 @@ public final class DankestSMPPlugin extends JavaPlugin {
     	CONFIG.addDefault("unused_val", true);
     	CONFIG.options().copyDefaults(true);
     	saveConfig();
-    	
 
-    	
-        getLogger().info("Started DankestSMPPlugin.");
+        //registering listeners
+        getServer().getPluginManager().registerEvents(new onPlayerJoin(),this);
+        getServer().getPluginManager().registerEvents(new onPlayerAttackPlayer(), this);
+
         plugin = this; //setting plugin to this instance.
 
-        new BukkitRunnable(){
-            @Override
-            public void run(){ //task to remove players with expired protection.
-                plugin.getLogger().info("[Debugger] Starting task to remove Players protection that expired.");
-                ArrayList<UUID> playersWithExpiredProtection = protection.playersInListWithExpiredProtection();
-                if(!playersWithExpiredProtection.isEmpty()){
-                    for (UUID player: playersWithExpiredProtection) {
-                        protection.removeProtectionFromPlayer(player);
-                    }
-                }
-            }
-        }.runTaskTimerAsynchronously(plugin, 0, 20*60*15); //run task every 15 mins
+        tasks.startTasks(); //starting schedules tasks
 
-
+        getLogger().info("Started DankestSMPPlugin."); //startup logic finished
     }
 
     @Override
