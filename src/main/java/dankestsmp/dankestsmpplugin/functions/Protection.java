@@ -50,7 +50,7 @@ public class Protection {
         ArrayList<UUID> expiredProtection = new ArrayList<>();
 
         for (Map.Entry<UUID, Date> playerBeingChecked: protect.entrySet()) { //traverse hashmap with foreach loop
-            if(new Date().getTime() >= playerBeingChecked.getValue().getTime() + 1000*60+15){ //check if they've had protection for 15 mins or longer
+            if(new Date().getTime() >= playerBeingChecked.getValue().getTime() + 1000*60*15){ //check if they've had protection for 15 mins or longer
                     expiredProtection.add(playerBeingChecked.getKey());
             }
         }
