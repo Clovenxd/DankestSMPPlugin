@@ -5,3 +5,7 @@ api-version: "1.20"
 authors: [ Cloven, Dolan ]
 description: To add uniqueness to DankestSMP
 website: https://github.com/Clovenxd
+commands:
+  meta:
+    description: Display meta information useful for debugging and development
+    usage: /<command>
