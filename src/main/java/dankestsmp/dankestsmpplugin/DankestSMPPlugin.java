@@ -1,17 +1,12 @@
 package dankestsmp.dankestsmpplugin;
 
-import dankestsmp.dankestsmpplugin.Utils.Debugger;
-import dankestsmp.dankestsmpplugin.Utils.Tasks;
-import dankestsmp.dankestsmpplugin.commands.*;
+import dankestsmp.dankestsmpplugin.utils.Debugger;
+import dankestsmp.dankestsmpplugin.utils.Tasks;
 import dankestsmp.dankestsmpplugin.functions.Protection;
 import dankestsmp.dankestsmpplugin.listeners.*;
-import org.bukkit.Bukkit;
-import org.bukkit.Server;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
-import java.util.ArrayList;
-import java.util.UUID;
+
 import java.util.HashMap;
 import org.bukkit.command.*;
 
@@ -22,8 +17,6 @@ public final class DankestSMPPlugin extends JavaPlugin {
     public static Protection protection = new Protection();
     public final static Debugger debugger = new Debugger();
     private final static Tasks tasks = new Tasks();
-    
-    private HashMap<String, CommandExecutor> Commands = new HashMap<String, CommandExecutor>();
     
     
     // Testing spigot config api to be used for future
@@ -41,15 +34,11 @@ public final class DankestSMPPlugin extends JavaPlugin {
     	saveConfig();
 
         //registering listeners
-        getServer().getPluginManager().registerEvents(new onPlayerJoin(),this);
-        getServer().getPluginManager().registerEvents(new onPlayerAttackPlayer(), this);
+        getServer().getPluginManager().registerEvents(new OnPlayerJoin(),this);
+        getServer().getPluginManager().registerEvents(new OnPlayerAttackPlayer(), this);
+        getServer().getPluginManager().registerEvents(new onEnchantItem(), this);
         
         // Register Commands
-        this.Commands.put("meta", new CommandMeta());
-        for(HashMap.Entry<String, CommandExecutor> cmds : this.Commands.entrySet())
-        {
-        	getCommand(cmds.getKey()).setExecutor(cmds.getValue());
-        }
 
         plugin = this; //setting plugin to this instance.
 

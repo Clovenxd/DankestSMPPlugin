@@ -6,7 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 
-public class onPlayerJoin implements Listener {
+public class OnPlayerJoin implements Listener {
 
     //when a player joins
     @EventHandler

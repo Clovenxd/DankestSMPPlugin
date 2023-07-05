@@ -1,4 +1,4 @@
-package dankestsmp.dankestsmpplugin.Utils;
+package dankestsmp.dankestsmpplugin.utils;
 
 import dankestsmp.dankestsmpplugin.DankestSMPPlugin;
 import org.bukkit.scheduler.BukkitRunnable;

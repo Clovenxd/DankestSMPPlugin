@@ -7,7 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
-public class onPlayerAttackPlayer implements Listener {
+public class OnPlayerAttackPlayer implements Listener {
 
     //event called when entity damages another entity
     @EventHandler

@@ -1,13 +1,13 @@
-package dankestsmp.dankestsmpplugin.Utils;
+package dankestsmp.dankestsmpplugin.utils;
 
 import dankestsmp.dankestsmpplugin.DankestSMPPlugin;
 
 //This class is to send important messages to console about what the plugin is currently doing
 public final class Debugger {
 
-    boolean debuggerOn = true;
+    public static boolean debuggerOn = true;
 
-    public void sendMessageToConsole(String message){
+    public static void sendMessageToConsole(String message){
         if(debuggerOn){
             DankestSMPPlugin.plugin.getLogger().info("[Debugger] " + message);
         }
