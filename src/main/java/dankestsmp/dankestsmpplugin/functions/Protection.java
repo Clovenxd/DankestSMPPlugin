@@ -1,6 +1,8 @@
 package dankestsmp.dankestsmpplugin.functions;
 
 import org.bukkit.entity.Player;
+import dankestsmp.dankestsmpplugin.DankestSMPPlugin;
+
 import java.util.*;
 
 //if it's the players first time joining the server add their uuid to a protection list
