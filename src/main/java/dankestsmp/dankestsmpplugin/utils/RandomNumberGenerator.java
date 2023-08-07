@@ -1,7 +1,6 @@
 package dankestsmp.dankestsmpplugin.utils;
 
 import java.util.Random;
-import java.util.SplittableRandom;
 
 //class for probability
 public class RandomNumberGenerator {

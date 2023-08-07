@@ -13,11 +13,11 @@ public final class Debugger {
         }
     }
 
-    public boolean isDebuggerOn(){
+    public static boolean isDebuggerOn(){
         return debuggerOn;
     }
 
-    public void toggleDebugger(){
+    public static void toggleDebugger(){
         debuggerOn = !debuggerOn;
     }
 

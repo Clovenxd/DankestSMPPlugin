@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 //class to keep tasks organised using BukkitRunnable()
-public class Tasks {
+public final class Tasks {
 
     public void startTasks(){
         new BukkitRunnable(){
