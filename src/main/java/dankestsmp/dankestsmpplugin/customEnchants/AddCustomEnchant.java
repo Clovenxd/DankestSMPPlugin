@@ -16,25 +16,19 @@ public class AddCustomEnchant{
 
 
     public static void addEnchant(ItemStack item, int expCost){
-        List<String> lore;
-        if(item.getItemMeta().hasLore()){
-            lore = item.getItemMeta().getLore();
-            Debugger.sendMessageToConsole("Item has lore.");
-        }else{
-            Debugger.sendMessageToConsole("Item has no lore. Creating lore.");
-            lore = new ArrayList<>();
-        }
+        List<String> lore = new ArrayList<>();
         Debugger.sendMessageToConsole("Item being enchanted is of class " + itemBeingEnchanted(item));
-        for (CustomEnchant enchant: customEnchants) {
+        for (CustomEnchant enchant : customEnchants) {
             Debugger.sendMessageToConsole("Trying for: " + enchant.getName());
-            if(itemBeingEnchanted(item).equalsIgnoreCase(enchant.getEnchantable()) && RandomNumberGenerator.percentChance(3, 1)){
+            if(itemBeingEnchanted(item).equalsIgnoreCase(enchant.getEnchantable()) && RandomNumberGenerator.percentChance(2, 0)){
                 Debugger.sendMessageToConsole("Enchanter got lucky and got the enchant: " + enchant.getName());
                 lore.add(enchant.getName() + ": " + calculateLevelOfEnchant(expCost, enchant.getMaxLevel()));
                 Debugger.sendMessageToConsole("Adding enchant to item lore.");
+                item.getItemMeta().setLore(lore);
+                Debugger.sendMessageToConsole("set the item's new lore.");
             }
         }
-        item.getItemMeta().setLore(lore);
-        Debugger.sendMessageToConsole("set the item's new lore.");
+        Debugger.sendMessageToConsole(item.getItemMeta().toString());
     }
 
     private static String itemBeingEnchanted(ItemStack item){
