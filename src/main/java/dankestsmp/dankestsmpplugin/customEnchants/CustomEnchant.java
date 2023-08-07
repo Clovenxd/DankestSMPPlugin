@@ -1,12 +1,8 @@
 package dankestsmp.dankestsmpplugin.customEnchants;
 
 import org.bukkit.Material;
-import org.bukkit.enchantments.EnchantmentTarget;
-import org.bukkit.inventory.ItemStack;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public abstract class CustomEnchant {
 

@@ -1,26 +1,15 @@
 package dankestsmp.dankestsmpplugin;
-
-<<<<<<< Updated upstream
-=======
-import dankestsmp.dankestsmpplugin.Utils.Debugger;
-import dankestsmp.dankestsmpplugin.Utils.Tasks;
-import dankestsmp.dankestsmpplugin.functions.Protection;
 import dankestsmp.dankestsmpplugin.listeners.*;
 import org.bukkit.configuration.file.FileConfiguration;
->>>>>>> Stashed changes
+import dankestsmp.dankestsmpplugin.utils.Debugger;
 import dankestsmp.dankestsmpplugin.utils.Tasks;
 import dankestsmp.dankestsmpplugin.functions.Protection;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.HashMap;
-import org.bukkit.command.*;
-
 public final class DankestSMPPlugin extends JavaPlugin {
 
-    //variables and other classes for other classes to access through main plugin instance.
+    //Instances of none static objects.
     public static DankestSMPPlugin plugin;
-    public static Protection protection = new Protection();
-    public final static Debugger debugger = new Debugger();
     private final static Tasks tasks = new Tasks();
     
     
@@ -51,12 +40,12 @@ public final class DankestSMPPlugin extends JavaPlugin {
 
         tasks.startTasks(); //starting schedules tasks
 
-        getLogger().info("Started DankestSMPPlugin."); //startup logic finished
+        Debugger.sendMessageToConsole("Started DankestSMPPlugin."); //startup logic finished
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("Shutting down DankestSMPPlugin.");
+        Debugger.sendMessageToConsole("Shutting down DankestSMPPlugin.");
     }
 
 }

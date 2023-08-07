@@ -1,7 +1,6 @@
 package dankestsmp.dankestsmpplugin.functions;
 
 import org.bukkit.entity.Player;
-import dankestsmp.dankestsmpplugin.DankestSMPPlugin;
 
 import java.util.*;
 

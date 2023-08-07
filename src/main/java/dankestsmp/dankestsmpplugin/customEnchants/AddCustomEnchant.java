@@ -3,9 +3,7 @@ package dankestsmp.dankestsmpplugin.customEnchants;
 import dankestsmp.dankestsmpplugin.utils.Debugger;
 import dankestsmp.dankestsmpplugin.utils.RandomNumberGenerator;
 import org.bukkit.Material;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.inventory.ItemStack;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
