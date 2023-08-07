@@ -3,7 +3,6 @@ import dankestsmp.dankestsmpplugin.listeners.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import dankestsmp.dankestsmpplugin.utils.Debugger;
 import dankestsmp.dankestsmpplugin.utils.Tasks;
-import dankestsmp.dankestsmpplugin.functions.Protection;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class DankestSMPPlugin extends JavaPlugin {
